@@ -8,8 +8,10 @@
     "preview": "svelte-kit preview",
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
-    "test": "jest src",
-    "test:watch": "npm run test -- --watch"
+    "test:unit": "jest --testPathPattern=__tests__/unit",
+    "test:acceptance": "jest --watchAll --testPathPattern=__tests__/acceptance",
+    "test": "npm run test:unit",
+    "test:watch": "npm run test:unit -- --watch"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
