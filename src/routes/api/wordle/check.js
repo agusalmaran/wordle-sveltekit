@@ -1,5 +1,12 @@
 export async function post({ request }) {
-  const { answer } = await request.json();
+  let answer = undefined;
+  try {
+    const data = await request.json();
+    answer = data.answer;
+  } catch {
+    answer = undefined
+  }
+
   if (answer === undefined) {
     return {
       status: 400

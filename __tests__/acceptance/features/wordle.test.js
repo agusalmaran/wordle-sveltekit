@@ -17,11 +17,20 @@ describe('World feature', () => {
     });
   });
 
-  it('data returned includes the user answer', async () => {
+  it('returns a 400 Bad Request if the answer is not include in the input params', async () => {
     const response = await fetch('http://localhost:3000/api/wordle/check', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: '{}'
+    });
+
+    expect(response.status).toBe(400);
+  });
+
+  it('returns a 400 Bad Request if there is no body', async () => {
+    const response = await fetch('http://localhost:3000/api/wordle/check', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' }
     });
 
     expect(response.status).toBe(400);
