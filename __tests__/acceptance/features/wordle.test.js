@@ -2,18 +2,15 @@ import fetch from 'node-fetch';
 
 describe('World feature', () => {
   it('should check and answer', async () => {
-    const body = {
-      answer: 'aword'
-    };
     const response = await fetch('http://localhost:3000/api/wordle/check', {
       method: 'post',
-      body: JSON.stringify(body),
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answer: 'aword' })
     });
     const data = await response.json();
 
+    expect(response.status).toBe(200);
     expect(data).toMatchObject({
-      answer: 'aword',
       isCorrect: true,
       isInvalid: false,
       evaluation: ['correct', 'correct', 'correct', 'correct', 'correct']
@@ -21,20 +18,12 @@ describe('World feature', () => {
   });
 
   it('data returned includes the user answer', async () => {
-    const body = {
-      answer: 'oword'
-    };
     const response = await fetch('http://localhost:3000/api/wordle/check', {
       method: 'post',
-      body: JSON.stringify(body),
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      body: '{}'
     });
-    const data = await response.json();
 
-    expect(data).toEqual(
-      expect.objectContaining({
-        answer: 'oword'
-      })
-    );
+    expect(response.status).toBe(400);
   });
 });
