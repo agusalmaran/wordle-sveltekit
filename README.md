@@ -1,30 +1,41 @@
-# create-svelte
+# Wordle Game with SvelteKit
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Implemetation of the Wordle Game (https://www.nytimes.com/games/wordle/index.html) using SvelteKit.
+The original game is a SPA with all the game logic included in it but this is an application with a backend API.
+It means that the logic in charge of check the guess of the user is happening in the backend.
 
-## Creating a project
+## Install de dependecies
 
 If you're seeing this, you've probably already done this step. Congrats!
 
 ```bash
-# create a new project in the current directory
-npm init svelte@next
-
-# create a new project in my-app
-npm init svelte@next my-app
+npm install
 ```
-
-> Note: the `@next` is temporary
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've installed dependencies, start a development server:
 
 ```bash
 npm run dev
 
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
+```
+
+## Testing
+
+You can test the app with:
+
+```bash
+# Run unit tests
+npm run test
+
+# Watch unit tests
+npm run test -- --watch
+
+# Run acceptance tests (You need the app up and running: `npm run dev`)
+npm run test:acceptance
 ```
 
 ## Building
